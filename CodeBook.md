@@ -13,7 +13,18 @@ The dataset includes the following files:
 'train/y_train.txt': Training labels.
 'test/X_test.txt': Test set.
 'test/y_test.txt': Test labels.
+
+
+
 Output
 The resulting tidydataset.txt dataset includes mean and standard deviation variables for the following original variables:
 tBodyAcc, tGravityAcc, tBodyAccJerk, tBodyGyro, tBodyGyroJerk, tBodyAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag, fBodyAcc, fBodyAccJerk, fBodyGyro, fBodyAccMag, fBodyBodyAccJerkMag, fBodyBodyGyroMag, fBodyBodyGyroJerkMag. All three X, Y, Z directions are included.
 
+
+Data Transformations
+The script, run_analysis.R, does the following tings:
+Load all the files 
+Merges the testset and trainset files into a single data table, apply column labels
+Creates a subset containing only mean and std variables
+Computes the means of this secondary dataset, group by subject/activity.
+Saves this last dataset to Tidydataset.txt
