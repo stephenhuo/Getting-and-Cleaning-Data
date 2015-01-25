@@ -61,7 +61,6 @@ combinddata<-cbind(as.data.table(subject), activities, alldata)
 
 # 5 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-#5a: Calculate average of each variable for each activity and each subject
 id_labels<-c("SubjectNumber", "ActivityID", "ActivityLabel")
 data_labels<-setdiff(colnames(combinddata), id_labels)
 predata<-melt(combinddata, id = id_labels, measure.vars = data_labels)
