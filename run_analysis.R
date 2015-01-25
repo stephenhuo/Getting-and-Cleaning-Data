@@ -66,6 +66,6 @@ id_labels<-c("SubjectNumber", "ActivityID", "ActivityLabel")
 data_labels<-setdiff(colnames(combinddata), id_labels)
 predata<-melt(combinddata, id = id_labels, measure.vars = data_labels)
 result<-dcast(predata, SubjectNumber + ActivityLabel ~ variable, mean)
-write.table(result, "tidydataset.txt",sep="/")
+write.table(result, "Tidydataset.txt",sep="/")
 
 
