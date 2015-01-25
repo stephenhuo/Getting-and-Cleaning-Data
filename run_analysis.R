@@ -33,16 +33,13 @@ activity_names <- activity_lables[,2]
  names(trainsetX)<-feature_names
 
 
-
-# combind the test and train data sets
-alldata<-rbind(trainsetX,testsetX)
-
-
-
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 
 testsetX<-testsetX[,grepl("mean|std", feature_names)]
 trainsetX<-trainsetX[,grepl("mean|std", feature_names)]
+
+# combind the test and train data sets
+alldata<-rbind(trainsetX,testsetX)
 
 # 3. Uses descriptive activity names to name the activities in the data set
 
@@ -64,14 +61,11 @@ combinddata<-cbind(as.data.table(subject), activities, alldata)
 
 # 5 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+#5a: Calculate average of each variable for each activity and each subject
 id_labels<-c("SubjectNumber", "ActivityID", "ActivityLabel")
-
 data_labels<-setdiff(colnames(combinddata), id_labels)
-
 predata<-melt(combinddata, id = id_labels, measure.vars = data_labels)
-
 result<-dcast(predata, SubjectNumber + ActivityLabel ~ variable, mean)
-
-write.table(result, "Tidydataset.txt",sep="/")
+write.table(result, "tidydataset.txt",sep="/")
 
 
